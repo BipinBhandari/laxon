@@ -1,10 +1,11 @@
 {
-  "name": "zion",
-  "version": "1.0.0",
+  "name": "zion-db",
+  "version": "1.2.4",
   "description": "Better Mongoose Models",
   "main": "index.js",
   "scripts": {
-    "test": "babel src --out-dir build && mocha ./build/test.js"
+    "test": "babel src --out-dir lib && mocha ./lib/test.js",
+    "prepare": "rm -rf lib && babel src --out-dir lib"
   },
   "keywords": [],
   "author": "Bipin Bhandari <bookbipii@gmail.com> (http://bipinblogs.com)",

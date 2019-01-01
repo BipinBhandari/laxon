@@ -18,6 +18,11 @@ const defaultConf = {
 const callbackMethods = ['beforeSave'];
 const instanceMethods = ['toJSON'];
 
+const isNativeType = obj => {
+  if (obj.name === "Number" || obj.name === "String") return true;
+  else return false;
+}
+
 const globalMethods = {
   findWithPagination: function(query, options = {}) {
     const { limit, pageNumber } = options;
@@ -162,7 +167,7 @@ const schemafyIfNested = obj => {
     R.map(x => {
       if (x[1].length !== 1) throw new Error('Nested array schema should have only one child.');
 
-      if (!R.has('ref', x[1][0])) {
+      if (!isNativeType(x[1][0]) && !R.has('ref',x[1][0])){
         x[1] = [schemafy(x[1][0])];
       }
     })(obj.Array);

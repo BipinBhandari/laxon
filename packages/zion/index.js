@@ -1,2 +1,2 @@
-const Zion = require('./src/index');
+const Zion = require('./lib/index');
 exports.default = Zion;
